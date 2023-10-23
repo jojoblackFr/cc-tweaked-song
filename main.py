@@ -5,7 +5,7 @@ import subprocess
 import time
 
 splice_time = 15
-
+isGithubHosted = True
 debug = False
 
 if debug:
@@ -52,7 +52,10 @@ print('Creating Manifest...')
 manifest = []
 
 size = len(os.listdir(f'output/{name}'))
-ip = "http://90.0.184.7:25566/song/"
+if isGithubHosted:
+	ip = "https://github.com/jojoblackFr/cc-tweaked-song/blob/main/output/"
+else:
+	ip = "http://90.0.184.7:25566/song/"
 
 manifest.append(f"shell.run('wget {ip}{name}/1.dfpwm')")
 manifest.append("shell.run('clear')")
